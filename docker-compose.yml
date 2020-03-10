@@ -1,0 +1,16 @@
+version: '3'
+services:
+  app:
+    build: .
+    environment:
+      - PORT=80
+      - REDIS_URL=redis://redis:6379
+    ports:
+      - 4001:80
+    depends_on:
+      - redis
+
+  redis:
+    image: redis:5.0.7
+    ports:
+      - 6379:6379
